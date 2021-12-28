@@ -6,7 +6,29 @@ andorid developer can debug serialport applications via cellphone which has no s
 当您的应用开发调试完毕后，我们把那一行代码删除即可，删除后，带有串口的安卓设备枚举串口时就能正确的串口，然后其它操作不需要您任何的修改
 
 
-SerialPortFinder.setVirtualSerialServer("XXX.XXX.XXX.XXX");
-
 这里的参数设置为电脑端的IP即可，当然您调试的时候，需要保证手机与电脑在同一个局域网下
 
+
+引用方法：
+Add it in your root build.gradle at the end of repositories:
+
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+Step 2. Add the dependency
+
+	dependencies {
+	        implementation 'com.github.jxchenhui:debugandroidserialport:1.0.0'
+	}
+
+
+使用步骤：
+1、此代码库中的bin目录下的所有文件拷贝到您的windows电脑，然后在电脑端运行server.exe，并点击界面中的启动按钮
+
+2、andorid代码中设置调试电脑的IP，如果不调用的话，那么机器就将使用正常的串口进行操作，设置后，库内部即与电脑交互，当您的程序发布时，把下面这行代码注释即可
+SerialPortFinder.setVirtualSerialServer("192.168.1.31");
+
+3、而后就跟google的andorid serial port操作一样了
