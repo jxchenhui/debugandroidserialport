@@ -105,7 +105,9 @@ public final class SerialPort {
                 }
                 closeTcp();
                 throw new IOException();
-            }
+            }else{
+                throw new IOException();
+           }
         }else{
             isvirtual = false;
             mFd = open(path, baudrate, dataBits, parity, stopBits, flags);
